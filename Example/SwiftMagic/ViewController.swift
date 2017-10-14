@@ -13,7 +13,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Logger.d("viewDidLoad")
+        Logger.level = .info
+        Logger.showThread = false
+        Logger.ouput = .deviceConsole
+        Logger.i("viewDidLoad")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -22,5 +25,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        Logger.d("button tapped")
+        DispatchQueue.global(qos: .background).async {
+            Logger.w("running not in main thread")
+        }
+        
+    }
 }
 
