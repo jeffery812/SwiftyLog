@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		024C02591FA77015002E6EF1 /* Fundation+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C02571FA77014002E6EF1 /* Fundation+extentions.swift */; };
+		024C025A1FA77015002E6EF1 /* UI+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C02581FA77014002E6EF1 /* UI+extentions.swift */; };
 		026BCB871F920C00003FF417 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BCB861F920C00003FF417 /* Logger.swift */; };
 		048EDA40613BF1170700AA072470ED0B /* Pods-SwiftMagic_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D382C36498D9BFEC679BADE94A9C46B /* Pods-SwiftMagic_Example-dummy.m */; };
 		1D3FA5664639ABECA5D03ECD95E9927D /* SwiftMagic-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DED8E38755892FB01CF189ACB16E56F9 /* SwiftMagic-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		024C02571FA77014002E6EF1 /* Fundation+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Fundation+extentions.swift"; path = "SwiftMagic/Classes/Fundation+extentions.swift"; sourceTree = "<group>"; };
+		024C02581FA77014002E6EF1 /* UI+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UI+extentions.swift"; path = "SwiftMagic/Classes/UI+extentions.swift"; sourceTree = "<group>"; };
 		026BCB861F920C00003FF417 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = SwiftMagic/Classes/Logger.swift; sourceTree = "<group>"; };
 		16FE4F3A60B61B28675A91CA41F1EF0D /* SwiftMagic.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMagic.xcconfig; sourceTree = "<group>"; };
 		1E64F741A435E5F87BD78C8B4B3B64CC /* Pods-SwiftMagic_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftMagic_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		8AC0035B027EECC161BC265D1509BCF5 /* SwiftMagic */ = {
 			isa = PBXGroup;
 			children = (
+				024C02571FA77014002E6EF1 /* Fundation+extentions.swift */,
+				024C02581FA77014002E6EF1 /* UI+extentions.swift */,
 				026BCB861F920C00003FF417 /* Logger.swift */,
 				64DC742FB3A05B30F9032245E792582E /* Support Files */,
 			);
@@ -296,6 +302,14 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					570165327C5BF38CE464100BE475B8B6 = {
+						LastSwiftMigration = 0900;
+					};
+					B9A4B598C9796CDD8A7EBB23AB0E43D0 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -329,7 +343,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				024C025A1FA77015002E6EF1 /* UI+extentions.swift in Sources */,
 				026BCB871F920C00003FF417 /* Logger.swift in Sources */,
+				024C02591FA77015002E6EF1 /* Fundation+extentions.swift in Sources */,
 				F497102007B0AEC8D87B5B63F6EAEB3C /* SwiftMagic-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A7249626055062D68AE079F38E4BE771 /* Pods-SwiftMagic_Tests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -380,6 +397,8 @@
 				PRODUCT_NAME = Pods_SwiftMagic_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -390,6 +409,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E942F4B156AEA0236291E25B25274CE3 /* Pods-SwiftMagic_Example.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -414,6 +434,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -570,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D1926EB1319F6C7987A5CB9585F5F3BF /* Pods-SwiftMagic_Tests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -592,6 +614,7 @@
 				PRODUCT_NAME = Pods_SwiftMagic_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -603,6 +626,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 40A4395A34095436AAEDE3339B2C89A9 /* Pods-SwiftMagic_Example.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -626,6 +650,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

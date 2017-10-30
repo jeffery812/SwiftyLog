@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         Logger.level = .info
         Logger.showThread = false
-        Logger.ouput = .deviceConsole
+        //Logger.ouput = .deviceConsole
         Logger.i("viewDidLoad")
         // Do any additional setup after loading the view, typically from a nib.
     }
