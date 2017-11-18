@@ -18,10 +18,10 @@ public enum LoggerLevel: Int {
     
     var name: String {
         switch self {
-        case .info: return "I"
-        case .debug: return "D"
-        case .warning: return "W"
-        case .error: return "E"
+        case .info: return "💙i"
+        case .debug: return "💚d"
+        case .warning: return "💛w"
+        case .error: return "❤️e"
         case .none: return "N"
         }
     }

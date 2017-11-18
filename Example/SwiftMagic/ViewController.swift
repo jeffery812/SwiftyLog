@@ -14,9 +14,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Logger.level = .info
-        Logger.showThread = false
+        Logger.showThread = true
         //Logger.ouput = .deviceConsole
         Logger.i("viewDidLoad")
+        Logger.d("This is debug log")
+        Logger.w("This is warning log")
+        Logger.e("This is error log")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
