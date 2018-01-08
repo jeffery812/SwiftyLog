@@ -47,11 +47,11 @@ public class Logger: NSObject {
         guard level.rawValue >= self.level.rawValue else { return }
         
         let _fileName = fileName.split(separator: "/")
-        let text = "\(showThread ? thread.description : "")[\(_fileName.last ?? "?")#\(functionName)#\(lineNumber)]\(tag ?? ""): \(message)"
+        let text = "\(level.name)-\(showThread ? thread.description : "")[\(_fileName.last ?? "?")#\(functionName)#\(lineNumber)]\(tag ?? ""): \(message)"
         if self.ouput == .deviceConsole {
             NSLog(text)
         } else {
-            print("\(currentTime.iso8601) \(level.name)-\(text)")
+            print("\(currentTime.iso8601) \(text)")
         }
     }
     
