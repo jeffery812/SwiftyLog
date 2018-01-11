@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		2D3DCB541D73C9089E420ECD /* Pods_SwiftMagic_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftMagic_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DCAFF9C73DC4111C9D4CAD0 /* Pods-SwiftMagic_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMagic_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMagic_Example/Pods-SwiftMagic_Example.release.xcconfig"; sourceTree = "<group>"; };
-		352DF55FF2F85D2812BEE57F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		352DF55FF2F85D2812BEE57F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SwiftMagic_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMagic_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,10 +42,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6605A157EFD1E339E3F82C73 /* Pods-SwiftMagic_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMagic_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMagic_Tests/Pods-SwiftMagic_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		6F41F89F4F1AF69C5F12E28F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		6F41F89F4F1AF69C5F12E28F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		73A5BA9C1547C5D655422852 /* Pods-SwiftMagic_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMagic_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMagic_Tests/Pods-SwiftMagic_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C81C71A8441EBBBD1FB7C37 /* Pods-SwiftMagic_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftMagic_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftMagic_Example/Pods-SwiftMagic_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A5FECC8427804EB994B931D5 /* SwiftMagic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SwiftMagic.podspec; path = ../SwiftMagic.podspec; sourceTree = "<group>"; };
+		A5FECC8427804EB994B931D5 /* SwiftMagic.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftMagic.podspec; path = ../SwiftMagic.podspec; sourceTree = "<group>"; };
 		F4C13B853668195F2FB9A6D9 /* Pods_SwiftMagic_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftMagic_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -215,10 +215,17 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = RYYCVPYKXT;
 						LastSwiftMigration = 0900;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = RYYCVPYKXT;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -517,6 +524,7 @@
 			baseConfigurationReference = 7C81C71A8441EBBBD1FB7C37 /* Pods-SwiftMagic_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RYYCVPYKXT;
 				INFOPLIST_FILE = SwiftMagic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -532,6 +540,7 @@
 			baseConfigurationReference = 2DCAFF9C73DC4111C9D4CAD0 /* Pods-SwiftMagic_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RYYCVPYKXT;
 				INFOPLIST_FILE = SwiftMagic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -546,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 73A5BA9C1547C5D655422852 /* Pods-SwiftMagic_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = RYYCVPYKXT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -567,6 +577,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6605A157EFD1E339E3F82C73 /* Pods-SwiftMagic_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = RYYCVPYKXT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

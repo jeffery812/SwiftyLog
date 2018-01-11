@@ -12,6 +12,7 @@ public extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
+        
         present(alert, animated: true, completion: nil)
     }
     
@@ -33,7 +34,7 @@ public enum ShakeDirection: Int {
 public extension UIView {
     public func shake(direction: ShakeDirection = .horizontal, times: Int = 5,
                       interval: TimeInterval = 0.1, delta: CGFloat = 2,
-                      completion: (() -> Void)? = nil) {        //播放动画
+                      completion: (() -> Void)? = nil) {        
         UIView.animate(withDuration: interval, animations: { () -> Void in
             switch direction {
             case .horizontal:

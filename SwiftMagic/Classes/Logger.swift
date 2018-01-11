@@ -30,21 +30,68 @@ public enum LoggerLevel: Int {
 public enum LoggerOutput: String {
     case debuggerConsole
     case deviceConsole
+    case file
+    case debugerConsoleAndFile
+    case deviceConsoleAndFile
 }
 
+
+private let fileExtension = "txt"
+
 public class Logger: NSObject {
-    public static var tag: String?
-    public static var level: LoggerLevel = .info
-    public static var ouput: LoggerOutput = .debuggerConsole
-    public static var showThread: Bool = false
+    public static let shared = Logger()
+    public var tag: String?
+    public var level: LoggerLevel = .info
+    public var ouput: LoggerOutput = .debuggerConsole
+    public var showThread: Bool = false
+    private var data: [String] = []
+    
+    private let logSubdiretory = FileManager.documentDirectoryURL.appendingPathComponent(fileExtension)
+    
+    var logUrl: URL? {
+        let fileName = "SwiftMagic"
+        try? FileManager.default.createDirectory(at: logSubdiretory, withIntermediateDirectories: false)
+        let url = logSubdiretory.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
+        return url
+    }
     
     private override init() {
         super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
     }
     
-    class func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
+    @objc private func appMovedToBackground() {
+        let lock = NSLock()
+        lock.lock()
+        defer { lock.unlock() }
+        save()
+    }
+    
+    func save() {
+        guard let url = logUrl else { return }
+        var stringsData = Data()
+        for string in data {
+            if let stringData = (string + "\n").data(using: String.Encoding.utf16) {
+                stringsData.append(stringData)
+            } else {
+                self.e("MutalbeData failed")
+            }
+        }
+        
+        do {
+            try stringsData.append2File(fileURL: url)
+            data.removeAll()
+        } catch let error as NSError {
+            self.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
+        }
+        
+    }
+    
+   
+    public func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
         
         guard level.rawValue >= self.level.rawValue else { return }
+        
         
         let _fileName = fileName.split(separator: "/")
         let text = "\(level.name)-\(showThread ? thread.description : "")[\(_fileName.last ?? "?")#\(functionName)#\(lineNumber)]\(tag ?? ""): \(message)"
@@ -53,18 +100,19 @@ public class Logger: NSObject {
         } else {
             print("\(currentTime.iso8601) \(text)")
         }
+        data.append("\(currentTime.iso8601) \(text)")
     }
     
-    public class func i(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
+    public func i(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
         log(.info, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
     }
-    public class func d(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
+    public func d(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
         log(.debug, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
     }
-    public class func w(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
+    public func w(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
         log(.warning, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
     }
-    public class func e(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
+    public func e(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
         log(.error, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
     }
 }

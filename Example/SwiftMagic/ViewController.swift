@@ -13,13 +13,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Logger.level = .info
-        Logger.showThread = true
-        //Logger.ouput = .deviceConsole
-        Logger.i("viewDidLoad")
-        Logger.d("This is debug log")
-        Logger.w("This is warning log")
-        Logger.e("This is error log")
+        let logger = Logger.shared
+        logger.level = .info
+        logger.showThread = false
+        logger.ouput = .deviceConsole
+        
+        logger.i("viewDidLoad: \(Date().iso8601)")
+        logger.d("This is debug log")
+        logger.w("This is warning log")
+        logger.e("This is error log")
+        logger.e("Hello SwiftMagic")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -29,11 +32,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
-        Logger.d("button tapped")
+        Logger.shared.d("button tapped")
         DispatchQueue.global(qos: .background).async {
-            Logger.w("running not in main thread")
+            Logger.shared.w("running not in main thread")
         }
-        
     }
 }
 

@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		024C02591FA77015002E6EF1 /* Fundation+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C02571FA77014002E6EF1 /* Fundation+extentions.swift */; };
-		024C025A1FA77015002E6EF1 /* UI+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024C02581FA77014002E6EF1 /* UI+extentions.swift */; };
+		021545D62007B852005CD02B /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545CC2007B852005CD02B /* LoggerManager.swift */; };
+		021545D72007B852005CD02B /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545CE2007B852005CD02B /* LoggerViewController.swift */; };
+		021545E12007BE92005CD02B /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DB2007BE92005CD02B /* Extension+UIView.swift */; };
+		021545E22007BE92005CD02B /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DC2007BE92005CD02B /* Extension+UIColor.swift */; };
+		021545E32007BE92005CD02B /* Fundation+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DD2007BE92005CD02B /* Fundation+extentions.swift */; };
+		021545E42007BE92005CD02B /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DE2007BE92005CD02B /* Extension+Date.swift */; };
+		021545E52007BE92005CD02B /* UI+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DF2007BE92005CD02B /* UI+extentions.swift */; };
+		021545E62007BE92005CD02B /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545E02007BE92005CD02B /* Extension+String.swift */; };
+		021545E82007BED7005CD02B /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545E72007BED7005CD02B /* FileManager.swift */; };
 		026BCB871F920C00003FF417 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BCB861F920C00003FF417 /* Logger.swift */; };
 		048EDA40613BF1170700AA072470ED0B /* Pods-SwiftMagic_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D382C36498D9BFEC679BADE94A9C46B /* Pods-SwiftMagic_Example-dummy.m */; };
 		1D3FA5664639ABECA5D03ECD95E9927D /* SwiftMagic-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DED8E38755892FB01CF189ACB16E56F9 /* SwiftMagic-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,8 +39,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		024C02571FA77014002E6EF1 /* Fundation+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Fundation+extentions.swift"; path = "SwiftMagic/Classes/Fundation+extentions.swift"; sourceTree = "<group>"; };
-		024C02581FA77014002E6EF1 /* UI+extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UI+extentions.swift"; path = "SwiftMagic/Classes/UI+extentions.swift"; sourceTree = "<group>"; };
+		021545CC2007B852005CD02B /* LoggerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
+		021545CE2007B852005CD02B /* LoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
+		021545DB2007BE92005CD02B /* Extension+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		021545DC2007BE92005CD02B /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		021545DD2007BE92005CD02B /* Fundation+extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fundation+extentions.swift"; sourceTree = "<group>"; };
+		021545DE2007BE92005CD02B /* Extension+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
+		021545DF2007BE92005CD02B /* UI+extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UI+extentions.swift"; sourceTree = "<group>"; };
+		021545E02007BE92005CD02B /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		021545E72007BED7005CD02B /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		026BCB861F920C00003FF417 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = SwiftMagic/Classes/Logger.swift; sourceTree = "<group>"; };
 		16FE4F3A60B61B28675A91CA41F1EF0D /* SwiftMagic.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMagic.xcconfig; sourceTree = "<group>"; };
 		1E64F741A435E5F87BD78C8B4B3B64CC /* Pods-SwiftMagic_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftMagic_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -96,6 +110,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		021545C42007B852005CD02B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			path = SwiftMagic/Classes/Views;
+			sourceTree = "<group>";
+		};
+		021545CB2007B852005CD02B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				021545CC2007B852005CD02B /* LoggerManager.swift */,
+			);
+			name = Managers;
+			path = SwiftMagic/Classes/Managers;
+			sourceTree = "<group>";
+		};
+		021545CD2007B852005CD02B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				021545CE2007B852005CD02B /* LoggerViewController.swift */,
+			);
+			name = Controllers;
+			path = SwiftMagic/Classes/Controllers;
+			sourceTree = "<group>";
+		};
+		021545DA2007BE92005CD02B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				021545E72007BED7005CD02B /* FileManager.swift */,
+				021545DB2007BE92005CD02B /* Extension+UIView.swift */,
+				021545DC2007BE92005CD02B /* Extension+UIColor.swift */,
+				021545DD2007BE92005CD02B /* Fundation+extentions.swift */,
+				021545DE2007BE92005CD02B /* Extension+Date.swift */,
+				021545DF2007BE92005CD02B /* UI+extentions.swift */,
+				021545E02007BE92005CD02B /* Extension+String.swift */,
+			);
+			name = Extensions;
+			path = SwiftMagic/Classes/Extensions;
+			sourceTree = "<group>";
+		};
 		1214BB3A0D749F7771B0574CF3A14B41 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,9 +242,11 @@
 		8AC0035B027EECC161BC265D1509BCF5 /* SwiftMagic */ = {
 			isa = PBXGroup;
 			children = (
-				024C02571FA77014002E6EF1 /* Fundation+extentions.swift */,
-				024C02581FA77014002E6EF1 /* UI+extentions.swift */,
 				026BCB861F920C00003FF417 /* Logger.swift */,
+				021545DA2007BE92005CD02B /* Extensions */,
+				021545CD2007B852005CD02B /* Controllers */,
+				021545CB2007B852005CD02B /* Managers */,
+				021545C42007B852005CD02B /* Views */,
 				64DC742FB3A05B30F9032245E792582E /* Support Files */,
 			);
 			name = SwiftMagic;
@@ -304,7 +361,7 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					570165327C5BF38CE464100BE475B8B6 = {
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0920;
 					};
 					B9A4B598C9796CDD8A7EBB23AB0E43D0 = {
 						LastSwiftMigration = 0900;
@@ -343,9 +400,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				024C025A1FA77015002E6EF1 /* UI+extentions.swift in Sources */,
+				021545E12007BE92005CD02B /* Extension+UIView.swift in Sources */,
+				021545D72007B852005CD02B /* LoggerViewController.swift in Sources */,
+				021545E22007BE92005CD02B /* Extension+UIColor.swift in Sources */,
+				021545E32007BE92005CD02B /* Fundation+extentions.swift in Sources */,
+				021545E42007BE92005CD02B /* Extension+Date.swift in Sources */,
+				021545D62007B852005CD02B /* LoggerManager.swift in Sources */,
+				021545E82007BED7005CD02B /* FileManager.swift in Sources */,
+				021545E62007BE92005CD02B /* Extension+String.swift in Sources */,
+				021545E52007BE92005CD02B /* UI+extentions.swift in Sources */,
 				026BCB871F920C00003FF417 /* Logger.swift in Sources */,
-				024C02591FA77015002E6EF1 /* Fundation+extentions.swift in Sources */,
 				F497102007B0AEC8D87B5B63F6EAEB3C /* SwiftMagic-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
