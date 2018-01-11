@@ -22,6 +22,8 @@ class LoggerManager: NSObject {
     public func show() {
         guard let topViewController = UIApplication.topViewController() else { return }
         guard topViewController .isKind(of: LoggerViewController.self) == false else { return }
+        
+        controller.data = Logger.shared.load()
         topViewController.present(controller, animated: true, completion: nil)
     }
 }

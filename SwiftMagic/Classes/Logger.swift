@@ -71,7 +71,7 @@ public class Logger: NSObject {
         guard let url = logUrl else { return }
         var stringsData = Data()
         for string in data {
-            if let stringData = (string + "\n").data(using: String.Encoding.utf16) {
+            if let stringData = (string + "\n").data(using: String.Encoding.utf8) {
                 stringsData.append(stringData)
             } else {
                 self.e("MutalbeData failed")
@@ -84,10 +84,15 @@ public class Logger: NSObject {
         } catch let error as NSError {
             self.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
         }
-        
     }
     
-   
+    func load() -> String? {
+        guard let url = logUrl else { return nil }
+        guard let strings = try? String(contentsOf: url, encoding: String.Encoding.utf8) else { return nil }
+
+        return strings
+    }
+
     public func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
         
         guard level.rawValue >= self.level.rawValue else { return }

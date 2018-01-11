@@ -17,6 +17,12 @@ let themeColor: UIColor = UIColor.hex(hex: 0x00B3C4)
 
 class LoggerViewController: UIViewController {
 
+    var data: String? {
+        didSet {
+            textView.text = data
+        }
+    }
+    
     var textView: UITextView = {
         let view = UITextView()
         view.isEditable = false
@@ -49,6 +55,8 @@ class LoggerViewController: UIViewController {
         super.viewDidLoad()
 
         addSubViews()
+        
+        textView.text = data
 
     }
     
@@ -69,6 +77,9 @@ class LoggerViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnSend]-(16)-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnCancel]-(16)-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(20)-[textView]-[btnSend(==32)]-[btnCancel(==32)]-(8)-|", options: [], metrics: nil, views: views))
+        
+        
+        textView.text = "Hello SwiftMagic"
     }
     
     @objc func btnCancelPressed(_ button: UIButton) {
