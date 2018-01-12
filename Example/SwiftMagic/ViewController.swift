@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         let logger = Logger.shared
         logger.level = .info
         logger.showThread = false
-        logger.ouput = .deviceConsole
+        logger.ouput = .fileOnly
         
         logger.i("viewDidLoad: \(Date().iso8601)")
         logger.d("This is debug log")

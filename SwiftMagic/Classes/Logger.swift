@@ -18,11 +18,11 @@ public enum LoggerLevel: Int {
     
     var name: String {
         switch self {
-        case .info: return "💙i"
-        case .debug: return "💚d"
-        case .warning: return "💛w"
-        case .error: return "❤️e"
-        case .none: return "N"
+            case .info: return "💙i"
+            case .debug: return "💚d"
+            case .warning: return "💛w"
+            case .error: return "❤️e"
+            case .none: return "N"
         }
     }
 }
@@ -30,13 +30,14 @@ public enum LoggerLevel: Int {
 public enum LoggerOutput: String {
     case debuggerConsole
     case deviceConsole
-    case file
+    case fileOnly
     case debugerConsoleAndFile
     case deviceConsoleAndFile
 }
 
 
 private let fileExtension = "txt"
+private let LOG_BUFFER_SIZE = 10
 
 public class Logger: NSObject {
     public static let shared = Logger()
@@ -105,12 +106,32 @@ public class Logger: NSObject {
         
         let _fileName = fileName.split(separator: "/")
         let text = "\(level.name)-\(showThread ? thread.description : "")[\(_fileName.last ?? "?")#\(functionName)#\(lineNumber)]\(tag ?? ""): \(message)"
-        if self.ouput == .deviceConsole {
-            NSLog(text)
-        } else {
-            print("\(currentTime.iso8601) \(text)")
+        
+        switch self.ouput {
+            case .fileOnly:
+                addToBuffer(text: "\(currentTime.iso8601) \(text)")
+            case .debuggerConsole:
+                print("\(currentTime.iso8601) \(text)")
+            case .deviceConsole:
+                NSLog(text)
+            case .debugerConsoleAndFile:
+                print("\(currentTime.iso8601) \(text)")
+                addToBuffer(text: "\(currentTime.iso8601) \(text)")
+            case .deviceConsoleAndFile:
+                NSLog(text)
+                addToBuffer(text: "\(currentTime.iso8601) \(text)")
         }
-        data.append("\(currentTime.iso8601) \(text)")
+    }
+    
+    private func addToBuffer(text: String) {
+        let lock = NSLock()
+        lock.lock()
+        defer { lock.unlock() }
+        
+        data.append(text)
+        if data.count > LOG_BUFFER_SIZE {
+            save()
+        }
     }
     
     public func i(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
