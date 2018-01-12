@@ -17,6 +17,8 @@ let themeColor: UIColor = UIColor.hex(hex: 0x00B3C4)
 
 class LoggerViewController: UIViewController {
 
+    var delegate: LoggerAction?
+    
     var data: String? {
         didSet {
             textView.text = data
@@ -24,9 +26,11 @@ class LoggerViewController: UIViewController {
     }
     
     var textView: UITextView = {
+        //let view = HScrollableTextView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), textContainer: nil)
         let view = UITextView()
         view.isEditable = false
         view.backgroundColor = UIColor.lightGray
+        //view.contentSize = CGSize(width: 1000, height: 200)
         return view
     }()
     
@@ -41,6 +45,15 @@ class LoggerViewController: UIViewController {
         return button
     }()
     
+    var btnRemove: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = themeColor
+        button.setTitleColor(.white, for: .normal)
+        button.roundedCorners(cornerRadius: 5)
+        button.setTitle("Remove All", for: .normal)
+        button.addTarget(self, action: #selector(btnRemovePressed(_:)), for: .touchUpInside)
+        return button
+    }()
     var btnCancel: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = themeColor
@@ -63,20 +76,18 @@ class LoggerViewController: UIViewController {
     private func addSubViews() {
         self.view.backgroundColor = UIColor.white
         
-        view.addSubview(textView)
-        view.addSubview(btnSend)
-        view.addSubview(btnCancel)
-        
-        [textView, btnSend, btnCancel].forEach { (view: UIView) in
-            view.translatesAutoresizingMaskIntoConstraints = false
+        [textView, btnSend, btnRemove, btnCancel].forEach { (subView: UIView) in
+            subView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(subView)
         }
         
-        let views: [String:UIView] = ["textView": textView, "btnSend": btnSend, "btnCancel": btnCancel]
+        let views: [String:UIView] = ["textView": textView, "btnSend": btnSend, "btnRemove": btnRemove, "btnCancel": btnCancel]
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[textView]|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnSend]-(16)-|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnRemove]-(16)-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnCancel]-(16)-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(20)-[textView]-[btnSend(==32)]-[btnCancel(==32)]-(8)-|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(20)-[textView]-[btnSend(==32)]-[btnRemove(==32)]-[btnCancel(==32)]-(8)-|", options: [], metrics: nil, views: views))
         
         
         textView.text = "Hello SwiftMagic"
@@ -89,7 +100,15 @@ class LoggerViewController: UIViewController {
     @objc func btnSendPressed(_ button: UIButton) {
         sendEmail()
     }
+    
+    @objc func btnRemovePressed(_ button: UIButton) {
+        delegate?.removeAll()
+    }
+    
+    func reload() {
         
+    }
+    
     private func sendEmail() {
         //Check to see the device can send email.
         guard MFMailComposeViewController.canSendMail() == true else {
@@ -102,9 +121,17 @@ class LoggerViewController: UIViewController {
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self
         
-        //Set the subject and message of the email
-        mailComposer.setSubject("Have you heard a swift?")
-        mailComposer.setMessageBody("This is what they sound like.", isHTML: false)
+        var body = "Host App: \(Bundle.main.bundleIdentifier ?? "")\n"
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+            let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            body += "Host App Version: \(version).\(buildNumber)\n"
+        }
+        if let venderId = UIDevice.current.identifierForVendor {
+            body += "identifierForVendor: \(venderId)\n"
+        }
+
+        mailComposer.setSubject("Log of \(Bundle.main.bundleIdentifier ?? "")")
+        mailComposer.setMessageBody(body, isHTML: false)
 
         if let data = try? Data(contentsOf: url) {
             mailComposer.addAttachmentData(data, mimeType: "text/txt", fileName: "SwiftMagic.txt")

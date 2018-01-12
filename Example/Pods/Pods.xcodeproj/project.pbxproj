@@ -9,14 +9,15 @@
 /* Begin PBXBuildFile section */
 		021545D62007B852005CD02B /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545CC2007B852005CD02B /* LoggerManager.swift */; };
 		021545D72007B852005CD02B /* LoggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545CE2007B852005CD02B /* LoggerViewController.swift */; };
-		021545E12007BE92005CD02B /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DB2007BE92005CD02B /* Extension+UIView.swift */; };
 		021545E22007BE92005CD02B /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DC2007BE92005CD02B /* Extension+UIColor.swift */; };
-		021545E32007BE92005CD02B /* Fundation+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DD2007BE92005CD02B /* Fundation+extentions.swift */; };
+		021545E32007BE92005CD02B /* Extension+Fundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DD2007BE92005CD02B /* Extension+Fundation.swift */; };
 		021545E42007BE92005CD02B /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DE2007BE92005CD02B /* Extension+Date.swift */; };
-		021545E52007BE92005CD02B /* UI+extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DF2007BE92005CD02B /* UI+extentions.swift */; };
-		021545E62007BE92005CD02B /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545E02007BE92005CD02B /* Extension+String.swift */; };
+		021545E52007BE92005CD02B /* Extension+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545DF2007BE92005CD02B /* Extension+UI.swift */; };
 		021545E82007BED7005CD02B /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021545E72007BED7005CD02B /* FileManager.swift */; };
+		021546242008074C005CD02B /* HScrollableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021546232008074C005CD02B /* HScrollableTextView.swift */; };
 		026BCB871F920C00003FF417 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026BCB861F920C00003FF417 /* Logger.swift */; };
+		02E3B979200948420016E5BE /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3B978200948420016E5BE /* DeviceManager.swift */; };
+		02E3B98E20094A140016E5BE /* Extension+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E3B98D20094A140016E5BE /* Extension+UIDevice.swift */; };
 		048EDA40613BF1170700AA072470ED0B /* Pods-SwiftMagic_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D382C36498D9BFEC679BADE94A9C46B /* Pods-SwiftMagic_Example-dummy.m */; };
 		1D3FA5664639ABECA5D03ECD95E9927D /* SwiftMagic-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DED8E38755892FB01CF189ACB16E56F9 /* SwiftMagic-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3202D4243600A3F91261DA4D08CAADA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
@@ -41,14 +42,15 @@
 /* Begin PBXFileReference section */
 		021545CC2007B852005CD02B /* LoggerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		021545CE2007B852005CD02B /* LoggerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerViewController.swift; sourceTree = "<group>"; };
-		021545DB2007BE92005CD02B /* Extension+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		021545DC2007BE92005CD02B /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
-		021545DD2007BE92005CD02B /* Fundation+extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fundation+extentions.swift"; sourceTree = "<group>"; };
+		021545DD2007BE92005CD02B /* Extension+Fundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Fundation.swift"; sourceTree = "<group>"; };
 		021545DE2007BE92005CD02B /* Extension+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
-		021545DF2007BE92005CD02B /* UI+extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UI+extentions.swift"; sourceTree = "<group>"; };
-		021545E02007BE92005CD02B /* Extension+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		021545DF2007BE92005CD02B /* Extension+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UI.swift"; sourceTree = "<group>"; };
 		021545E72007BED7005CD02B /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		021546232008074C005CD02B /* HScrollableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HScrollableTextView.swift; sourceTree = "<group>"; };
 		026BCB861F920C00003FF417 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = SwiftMagic/Classes/Logger.swift; sourceTree = "<group>"; };
+		02E3B978200948420016E5BE /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		02E3B98D20094A140016E5BE /* Extension+UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIDevice.swift"; sourceTree = "<group>"; };
 		16FE4F3A60B61B28675A91CA41F1EF0D /* SwiftMagic.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMagic.xcconfig; sourceTree = "<group>"; };
 		1E64F741A435E5F87BD78C8B4B3B64CC /* Pods-SwiftMagic_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftMagic_Tests-resources.sh"; sourceTree = "<group>"; };
 		230E28E81A10C64FF8CE98EF319F8A8E /* Pods-SwiftMagic_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftMagic_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		021545C42007B852005CD02B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				021546232008074C005CD02B /* HScrollableTextView.swift */,
 			);
 			name = Views;
 			path = SwiftMagic/Classes/Views;
@@ -122,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				021545CC2007B852005CD02B /* LoggerManager.swift */,
+				02E3B978200948420016E5BE /* DeviceManager.swift */,
 			);
 			name = Managers;
 			path = SwiftMagic/Classes/Managers;
@@ -140,12 +144,11 @@
 			isa = PBXGroup;
 			children = (
 				021545E72007BED7005CD02B /* FileManager.swift */,
-				021545DB2007BE92005CD02B /* Extension+UIView.swift */,
 				021545DC2007BE92005CD02B /* Extension+UIColor.swift */,
-				021545DD2007BE92005CD02B /* Fundation+extentions.swift */,
+				021545DD2007BE92005CD02B /* Extension+Fundation.swift */,
 				021545DE2007BE92005CD02B /* Extension+Date.swift */,
-				021545DF2007BE92005CD02B /* UI+extentions.swift */,
-				021545E02007BE92005CD02B /* Extension+String.swift */,
+				021545DF2007BE92005CD02B /* Extension+UI.swift */,
+				02E3B98D20094A140016E5BE /* Extension+UIDevice.swift */,
 			);
 			name = Extensions;
 			path = SwiftMagic/Classes/Extensions;
@@ -400,17 +403,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				021545E12007BE92005CD02B /* Extension+UIView.swift in Sources */,
 				021545D72007B852005CD02B /* LoggerViewController.swift in Sources */,
 				021545E22007BE92005CD02B /* Extension+UIColor.swift in Sources */,
-				021545E32007BE92005CD02B /* Fundation+extentions.swift in Sources */,
+				021545E32007BE92005CD02B /* Extension+Fundation.swift in Sources */,
 				021545E42007BE92005CD02B /* Extension+Date.swift in Sources */,
+				02E3B979200948420016E5BE /* DeviceManager.swift in Sources */,
 				021545D62007B852005CD02B /* LoggerManager.swift in Sources */,
+				02E3B98E20094A140016E5BE /* Extension+UIDevice.swift in Sources */,
 				021545E82007BED7005CD02B /* FileManager.swift in Sources */,
-				021545E62007BE92005CD02B /* Extension+String.swift in Sources */,
-				021545E52007BE92005CD02B /* UI+extentions.swift in Sources */,
+				021545E52007BE92005CD02B /* Extension+UI.swift in Sources */,
 				026BCB871F920C00003FF417 /* Logger.swift in Sources */,
 				F497102007B0AEC8D87B5B63F6EAEB3C /* SwiftMagic-dummy.m in Sources */,
+				021546242008074C005CD02B /* HScrollableTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

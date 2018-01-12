@@ -86,6 +86,11 @@ public class Logger: NSObject {
         }
     }
     
+    func removeAll() {
+        guard let url = logUrl else { return }
+        try? FileManager.default.removeItem(at: url)
+    }
+    
     func load() -> String? {
         guard let url = logUrl else { return nil }
         guard let strings = try? String(contentsOf: url, encoding: String.Encoding.utf8) else { return nil }

@@ -1,13 +1,67 @@
 //
-//  LoggerViewController.swift
-//  SwiftMagic
+//  UI+extentions.swift
+//  Pods
 //
-//  Created by Zhihui Tang on 2018-01-10.
+//  Created by Zhihui Tang on 2017-10-30.
 //
-
 
 import Foundation
-import UIKit
+
+public extension UIViewController {
+    func showAlert(withTitle title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    var contentViewController: UIViewController {
+        if let navcon = self as? UINavigationController {
+            return navcon.visibleViewController ?? self
+        } else {
+            return self
+        }
+    }
+}
+
+// Shake oritention
+public enum ShakeDirection: Int {
+    case horizontal
+    case vertical
+}
+
+public extension UIView {
+    public func shake(direction: ShakeDirection = .horizontal, times: Int = 5,
+                      interval: TimeInterval = 0.1, delta: CGFloat = 2,
+                      completion: (() -> Void)? = nil) {        
+        UIView.animate(withDuration: interval, animations: { () -> Void in
+            switch direction {
+            case .horizontal:
+                self.layer.setAffineTransform( CGAffineTransform(translationX: delta, y: 0))
+                break
+            case .vertical:
+                self.layer.setAffineTransform( CGAffineTransform(translationX: 0, y: delta))
+                break
+            }
+        }) { (complete) -> Void in
+            if (times == 0) {
+                // last shaking finish, reset location, callback
+                UIView.animate(withDuration: interval, animations: { () -> Void in
+                    self.layer.setAffineTransform(CGAffineTransform.identity)
+                }, completion: { (complete) -> Void in
+                    completion?()
+                })
+            }
+            else {
+                // not last shaking, continue
+                self.shake(direction: direction, times: times - 1,  interval: interval,
+                           delta: delta * -1, completion:completion)
+            }
+        }
+    }
+}
+
 
 extension UIView {
     var x: CGFloat {
@@ -20,7 +74,7 @@ extension UIView {
             return self.frame.origin.x
         }
     }
-
+    
     var y: CGFloat {
         set {
             var frame = self.frame
@@ -31,7 +85,7 @@ extension UIView {
             return self.frame.origin.y
         }
     }
-
+    
     var centerX: CGFloat {
         set {
             var center = self.center
@@ -42,7 +96,7 @@ extension UIView {
             return self.center.x
         }
     }
-
+    
     var centerY: CGFloat {
         set {
             var center = self.center
@@ -53,7 +107,7 @@ extension UIView {
             return self.center.y
         }
     }
-
+    
     var width: CGFloat {
         set {
             var frame = self.frame
@@ -64,7 +118,7 @@ extension UIView {
             return self.frame.size.width
         }
     }
-
+    
     var height: CGFloat {
         set {
             var frame = self.frame
@@ -75,7 +129,7 @@ extension UIView {
             return self.frame.size.height
         }
     }
-
+    
     var size: CGSize {
         set {
             var frame = self.frame
@@ -86,7 +140,7 @@ extension UIView {
             return self.frame.size
         }
     }
-
+    
     var origin: CGPoint {
         set {
             var frame = self.frame
@@ -97,7 +151,7 @@ extension UIView {
             return self.frame.origin
         }
     }
-
+    
     var bottomY: CGFloat {
         set {
             var frame = self.frame
@@ -108,7 +162,7 @@ extension UIView {
             return self.height + self.y
         }
     }
-
+    
     var rightX: CGFloat {
         set {
             var frame = self.frame
@@ -119,14 +173,14 @@ extension UIView {
             return self.width + self.x
         }
     }
-
+    
     // MARK: - UIView round corner
     ///
     /// - Parameter cornerRadius: radius
     func roundedCorners(cornerRadius: CGFloat) {
         roundedCorners(cornerRadius: cornerRadius, borderWidth: 0, borderColor: nil)
     }
-
+    
     ///
     /// - Parameters:
     ///   - cornerRadius:
@@ -138,7 +192,7 @@ extension UIView {
         self.layer.borderColor = borderColor?.cgColor
         self.layer.masksToBounds = true
     }
-
+    
     ///
     /// - Parameters:
     ///   - cornerRadius:
@@ -150,7 +204,7 @@ extension UIView {
         layer.path = path.cgPath
         self.layer.mask = layer
     }
-
+    
     ///
     /// - Parameters:
     ///   - colors:
@@ -184,3 +238,4 @@ extension UIView {
         self.sendSubview(toBack: effectView)
     }
 }
+
