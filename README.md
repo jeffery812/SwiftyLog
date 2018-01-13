@@ -5,11 +5,17 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 
+SwiftMagic is a tool to record log in an elegant way. You also can send the log to the specified email address by shaking the device. Easy to use
+
 ## 1. Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## 2. Requirements
+
+Xcode: 9.0
+
+iOS: 8.0
 
 ## 3. Installation
 
