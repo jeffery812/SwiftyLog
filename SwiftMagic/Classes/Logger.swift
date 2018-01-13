@@ -59,44 +59,55 @@ public class Logger: NSObject {
     private override init() {
         super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        /*
+        NSSetUncaughtExceptionHandler { (exception) in
+            Logger.shared.save()
+        }
+         */
     }
     
     @objc private func appMovedToBackground() {
+         self.saveAsync()
+    }
+    
+    func saveAsync() {
+        guard let url = logUrl else { return }
+        
         let lock = NSLock()
         lock.lock()
         defer { lock.unlock() }
-        save()
-    }
-    
-    func save() {
-        guard let url = logUrl else { return }
-        var stringsData = Data()
-        for string in data {
-            if let stringData = (string + "\n").data(using: String.Encoding.utf8) {
-                stringsData.append(stringData)
-            } else {
-                self.e("MutalbeData failed")
+        
+        DispatchQueue.global(qos: .background).async {
+            var stringsData = Data()
+            for string in self.data {
+                if let stringData = (string + "\n").data(using: String.Encoding.utf8) {
+                    stringsData.append(stringData)
+                } else {
+                    self.e("MutalbeData failed")
+                }
+            }
+            
+            do {
+                try stringsData.append2File(fileURL: url)
+                self.data.removeAll()
+            } catch let error as NSError {
+                self.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
             }
         }
-        
-        do {
-            try stringsData.append2File(fileURL: url)
-            data.removeAll()
-        } catch let error as NSError {
-            self.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
+    }
+    
+    func removeAllAsync() {
+        guard let url = logUrl else { return }
+        DispatchQueue.global(qos: .userInitiated).async {
+            try? FileManager.default.removeItem(at: url)
         }
     }
     
-    func removeAll() {
-        guard let url = logUrl else { return }
-        try? FileManager.default.removeItem(at: url)
-    }
-    
-    func load() -> String? {
+    func load() -> [String]? {
         guard let url = logUrl else { return nil }
         guard let strings = try? String(contentsOf: url, encoding: String.Encoding.utf8) else { return nil }
 
-        return strings
+        return strings.components(separatedBy: "\n")
     }
 
     public func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
@@ -130,7 +141,7 @@ public class Logger: NSObject {
         
         data.append(text)
         if data.count > LOG_BUFFER_SIZE {
-            save()
+            saveAsync()
         }
     }
     

@@ -12,7 +12,7 @@ import MessageUI
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         guard Logger.shared.level != .none else { return }
-        Logger.shared.save()
+        Logger.shared.saveAsync()
         let manager = LoggerManager()
         manager.show()
     }
@@ -28,17 +28,38 @@ class LoggerManager: NSObject {
         guard let topViewController = UIApplication.topViewController() else { return }
         guard topViewController .isKind(of: LoggerViewController.self) == false else { return }
         
-        let deviceInfo = DeviceManager.info().joined(separator: "\n")
-        controller.data = " \(Logger.shared.load() ?? "")=====>\n\(deviceInfo)\n<====="
+        controller.data = " \(loadLog())\(deviceInfo())"
         controller.delegate = self
         
         topViewController.present(controller, animated: true, completion: nil)
+    }
+    
+    private func loadLog() -> String {
+        var texts: [String] = []
+        
+        guard let data = Logger.shared.load() else { return "" }
+        
+        data.forEach { (string) in
+            texts.append("<pre style=\"line-height:8px;\">\(string)</pre>")
+        }
+        
+        return texts.joined()
+    }
+    
+    private func deviceInfo() -> String {
+        var texts:[String] = []
+        
+        texts.append("<pre style=\"line-height:8px;\">==============================================</pre>")
+        DeviceManager.info().forEach { (string) in
+            texts.append("<pre style=\"line-height:8px;\">\(string)</pre>")
+        }
+        return texts.joined()
     }
 }
 
 extension LoggerManager: LoggerAction {
     func removeAll() {
-        Logger.shared.removeAll()
-        controller.data = Logger.shared.load()
+        Logger.shared.removeAllAsync()
+        controller.data = loadLog()
     }
 }

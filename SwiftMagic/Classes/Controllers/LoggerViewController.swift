@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageUI
+import WebKit
 
 
 private let screenWidth = UIScreen.main.bounds.width
@@ -19,18 +20,37 @@ class LoggerViewController: UIViewController {
 
     var delegate: LoggerAction?
     
-    var data: String? {
+    var data: String = "" {
         didSet {
-            textView.text = data
+            loadWebView()
         }
     }
     
+    var webView: WKWebView = {
+        
+        let source: String = "var meta = document.createElement('meta');" +
+            "meta.name = 'viewport';" +
+            "meta.content = 'width=device-width, initial-scale=0.6, maximum-scale=0.8, user-scalable=yes';" +
+            "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);";
+        let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let userContentController: WKUserContentController = WKUserContentController()
+        let conf = WKWebViewConfiguration()
+        conf.userContentController = userContentController
+        userContentController.addUserScript(script)
+        let view = WKWebView(frame: CGRect.zero, configuration: conf)
+        
+        /*
+        view.scrollView.isScrollEnabled = true               // Make sure our view is interactable
+        view.scrollView.bounces = true                    // Things like this should be handled in web code
+        view.allowsBackForwardNavigationGestures = false   // Disable swiping to navigate
+         */
+        return view
+    }()
+    
     var textView: UITextView = {
-        //let view = HScrollableTextView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), textContainer: nil)
         let view = UITextView()
         view.isEditable = false
         view.backgroundColor = UIColor.lightGray
-        //view.contentSize = CGSize(width: 1000, height: 200)
         return view
     }()
     
@@ -69,28 +89,25 @@ class LoggerViewController: UIViewController {
 
         addSubViews()
         
-        textView.text = data
+        loadWebView()
 
     }
     
     private func addSubViews() {
         self.view.backgroundColor = UIColor.white
         
-        [textView, btnSend, btnRemove, btnCancel].forEach { (subView: UIView) in
+        [webView, btnSend, btnRemove, btnCancel].forEach { (subView: UIView) in
             subView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(subView)
         }
         
-        let views: [String:UIView] = ["textView": textView, "btnSend": btnSend, "btnRemove": btnRemove, "btnCancel": btnCancel]
+        let views: [String:UIView] = ["webView": webView, "btnSend": btnSend, "btnRemove": btnRemove, "btnCancel": btnCancel]
         
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[textView]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[webView]|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnSend]-(16)-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnRemove]-(16)-|", options: [], metrics: nil, views: views))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|-(16)-[btnCancel]-(16)-|", options: [], metrics: nil, views: views))
-        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(20)-[textView]-[btnSend(==32)]-[btnRemove(==32)]-[btnCancel(==32)]-(8)-|", options: [], metrics: nil, views: views))
-        
-        
-        textView.text = "Hello SwiftMagic"
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-(20)-[webView]-[btnSend(==32)]-[btnRemove(==32)]-[btnCancel(==32)]-(8)-|", options: [], metrics: nil, views: views))
     }
     
     @objc func btnCancelPressed(_ button: UIButton) {
@@ -105,12 +122,7 @@ class LoggerViewController: UIViewController {
         delegate?.removeAll()
     }
     
-    func reload() {
-        
-    }
-    
     private func sendEmail() {
-        //Check to see the device can send email.
         guard MFMailComposeViewController.canSendMail() == true else {
             self.showAlert(withTitle: "No email client", message: "Please configure your email client first")
             return
@@ -137,6 +149,10 @@ class LoggerViewController: UIViewController {
             mailComposer.addAttachmentData(data, mimeType: "text/txt", fileName: "SwiftMagic.txt")
         }
         self.present(mailComposer, animated: true, completion: nil)
+    }
+    
+    private func loadWebView() {
+        webView.loadHTMLString(data, baseURL: nil)
     }
 }
     

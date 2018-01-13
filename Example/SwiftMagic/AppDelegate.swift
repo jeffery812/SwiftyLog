@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         logger.level = .info
-        logger.showThread = false
+        logger.showThread = true
         logger.ouput = .debugerConsoleAndFile
         
         return true
