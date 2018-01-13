@@ -42,7 +42,7 @@ private let LOG_BUFFER_SIZE = 10
 public class Logger: NSObject {
     public static let shared = Logger()
     public var tag: String?
-    public var level: LoggerLevel = .info
+    public var level: LoggerLevel = .none
     public var ouput: LoggerOutput = .debuggerConsole
     public var showThread: Bool = false
     private var data: [String] = []

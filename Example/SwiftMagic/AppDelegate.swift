@@ -9,6 +9,8 @@
 import UIKit
 import SwiftMagic
 
+let logger = Logger.shared
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        logger.level = .info
+        logger.showThread = false
+        logger.ouput = .debugerConsoleAndFile
+        
         return true
     }
 
@@ -45,6 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         Logger.shared.d("shaken in AppDelegate")
     }
-
+    
 }
 

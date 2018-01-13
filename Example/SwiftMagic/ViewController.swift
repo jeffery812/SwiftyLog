@@ -9,15 +9,12 @@
 import UIKit
 import SwiftMagic
 
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logger = Logger.shared
-        logger.level = .info
-        logger.showThread = false
-        logger.ouput = .fileOnly
-        
+
         logger.i("viewDidLoad: \(Date().iso8601)")
         logger.d("This is debug log")
         logger.w("This is warning log")
@@ -34,8 +31,9 @@ class ViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: UIButton) {
         Logger.shared.d("button tapped")
         DispatchQueue.global(qos: .background).async {
-            Logger.shared.w("running not in main thread")
+            logger.w("running not in main thread")
         }
+        
     }
 }
 
