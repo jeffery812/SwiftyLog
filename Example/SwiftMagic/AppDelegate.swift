@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logger.showThread = true
         logger.ouput = .debugerConsoleAndFile
         
+        logger.d("Application stated")
         return true
     }
 

@@ -5,13 +5,13 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 
-## Example
+## 1. Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## 2. Requirements
 
-## Installation
+## 3. Installation
 
 SwiftMagic is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -22,29 +22,52 @@ pod 'SwiftMagic'
 # pod 'SwiftMagic', :git => 'https://github.com/zhihuitang/SwiftMagic.git'
 ```
 
-## Usage
+## 4. Usage
 
 ```swift
 import SwiftMagic
 
-...
+let logger = Logger.shared
 
-Logger.level = .info
-Logger.showThread = true
-Logger.ouput = .deviceConsole
-Logger.i("viewDidLoad")
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+		
+        // Disabled by default
+        // Logger.shared.level = .none
+        logger.level = .info
+        logger.showThread = true
+        logger.ouput = .debugerConsoleAndFile
+        
+        logger.d("Application stated")
+        // logger.i("information log")
+        // logger.e("error log")
+        // logger.d("debug log")
+        // logger.w("warning log")
+
+        return true
+    }
+
+}
 ```
 
 output:
 ```
-2017-10-14 11:38:34.836740+0200 SwiftMagic_Example[2060:1788178] [ViewController.swift#viewDidLoad()#19]-I: viewDidLoad
+2018-01-13T21:20:46.149Z 💚d-<NSThread: 0x1c0261dc0>{number = 1, name = main}[AppDelegate.swift#application(_:didFinishLaunchingWithOptions:)#26]: Application stated
 ```
 
-## Author
+### View logs by shaking device:
+
+**Shake** your device to view the logs on your test iPhone. In that page, you also can click button **Send email** to send the log file to specified email inbox:
+
+<img src="./res/logview.png" width="350">
+
+## 5. Author
 
 Zhihui Tang, crafttang@gmail.com
 
-## License
+## 6. License
 
 SwiftMagic is available under the MIT license. See the LICENSE file for more info.
 

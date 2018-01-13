@@ -12,6 +12,10 @@ import MessageUI
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         guard Logger.shared.level != .none else { return }
+        guard Logger.shared.ouput == .debugerConsoleAndFile
+            || Logger.shared.ouput == .deviceConsoleAndFile
+            || Logger.shared.ouput == .fileOnly else { return }
+        
         Logger.shared.saveAsync()
         let manager = LoggerManager()
         manager.show()
