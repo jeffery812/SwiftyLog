@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logger.showThread = true
         logger.ouput = .debugerConsoleAndFile
         
-        logger.d("Application stated")
+        logger.d("Application started")
         // logger.i("information log")
         // logger.e("error log")
         // logger.d("debug log")
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 output:
 ```
-2018-01-13T21:20:46.149Z 💚d-<NSThread: 0x1c0261dc0>{number = 1, name = main}[AppDelegate.swift#application(_:didFinishLaunchingWithOptions:)#26]: Application stated
+2018-01-13T21:20:46.149Z 💚d-<NSThread: 0x1c0261dc0>{number = 1, name = main}[AppDelegate.swift#application(_:didFinishLaunchingWithOptions:)#26]: Application started
 ```
 
 ### View logs by shaking device:

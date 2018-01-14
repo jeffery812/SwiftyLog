@@ -64,6 +64,6 @@ class LoggerManager: NSObject {
 extension LoggerManager: LoggerAction {
     func removeAll() {
         Logger.shared.removeAllAsync()
-        controller.data = loadLog()
+        controller.data = deviceInfo()
     }
 }

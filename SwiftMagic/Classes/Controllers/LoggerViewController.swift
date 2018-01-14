@@ -25,7 +25,7 @@ class LoggerViewController: UIViewController {
             loadWebView()
         }
     }
-    
+
     var webView: WKWebView = {
         
         let source: String = "var meta = document.createElement('meta');" +
@@ -128,8 +128,6 @@ class LoggerViewController: UIViewController {
             return
         }
 
-        guard let url = Logger.shared.logUrl else { return }
-        
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self
         
@@ -145,9 +143,20 @@ class LoggerViewController: UIViewController {
         mailComposer.setSubject("Log of \(Bundle.main.bundleIdentifier ?? "")")
         mailComposer.setMessageBody(body, isHTML: false)
 
-        if let data = try? Data(contentsOf: url) {
+
+        webView.evaluateJavaScript("document.documentElement.outerHTML.toString()") { (html, error) in
+            if let string = html as? String, let data = string.data(using: String.Encoding.utf16) {
+                
+                mailComposer.addAttachmentData(data, mimeType: "html", fileName: "\(Bundle.main.bundleIdentifier ?? "log").html" )
+            } else {
+                Logger.shared.e("get data from webview failed")
+            }
+        }
+        /*
+        if let data = try? Data(html) {
             mailComposer.addAttachmentData(data, mimeType: "text/txt", fileName: "SwiftMagic.txt")
         }
+        */
         self.present(mailComposer, animated: true, completion: nil)
     }
     
