@@ -1,8 +1,15 @@
-import UIKit
-import XCTest
-import SwiftMagic
+//
+//  SwiftMagicTests.swift
+//  SwiftMagicTests
+//
+//  Created by Zhihui Tang on 2018-03-23.
+//  Copyright © 2018 Zhihui Tang. All rights reserved.
+//
 
-class Tests: XCTestCase {
+import XCTest
+@testable import SwiftMagic
+
+class SwiftMagicTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -16,12 +23,12 @@ class Tests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure() {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
