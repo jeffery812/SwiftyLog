@@ -28,6 +28,8 @@
 		0285223F2065AA060090EF01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0285223D2065AA060090EF01 /* LaunchScreen.storyboard */; };
 		0285224A2065AA060090EF01 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028522492065AA060090EF01 /* ExampleTests.swift */; };
 		028522552065AA060090EF01 /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028522542065AA060090EF01 /* ExampleUITests.swift */; };
+		028522A520668F6E0090EF01 /* SwiftMagic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 028521FA2065A8F90090EF01 /* SwiftMagic.framework */; };
+		028522A620668F6E0090EF01 /* SwiftMagic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 028521FA2065A8F90090EF01 /* SwiftMagic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +54,28 @@
 			remoteGlobalIDString = 028522312065AA060090EF01;
 			remoteInfo = Example;
 		};
+		028522A720668F6E0090EF01 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 028521F12065A8F90090EF01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 028521F92065A8F90090EF01;
+			remoteInfo = SwiftMagic;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		028522A920668F6E0090EF01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				028522A620668F6E0090EF01 /* SwiftMagic.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		028521FA2065A8F90090EF01 /* SwiftMagic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMagic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				028522A520668F6E0090EF01 /* SwiftMagic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,10 +324,12 @@
 				0285222E2065AA060090EF01 /* Sources */,
 				0285222F2065AA060090EF01 /* Frameworks */,
 				028522302065AA060090EF01 /* Resources */,
+				028522A920668F6E0090EF01 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				028522A820668F6E0090EF01 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -513,6 +539,11 @@
 			isa = PBXTargetDependency;
 			target = 028522312065AA060090EF01 /* Example */;
 			targetProxy = 028522512065AA060090EF01 /* PBXContainerItemProxy */;
+		};
+		028522A820668F6E0090EF01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 028521F92065A8F90090EF01 /* SwiftMagic */;
+			targetProxy = 028522A720668F6E0090EF01 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -729,10 +760,12 @@
 		028522572065AA060090EF01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RYYCVPYKXT;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = crafttang.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -744,10 +777,12 @@
 		028522582065AA060090EF01 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RYYCVPYKXT;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = crafttang.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
