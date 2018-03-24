@@ -62,7 +62,6 @@ class LoggerViewController: UIViewController {
         button.setTitle("Send email", for: .normal)
         button.addTarget(self, action: #selector(btnSendPressed(_:)), for: .touchUpInside)
         
-        print("btnSend ===> ")
         return button
     }()
     
