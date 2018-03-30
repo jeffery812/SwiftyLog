@@ -1,6 +1,0 @@
-framework module SwiftMagic {
-  umbrella header "SwiftMagic-umbrella.h"
-
-  export *
-  module * { export * }
-}

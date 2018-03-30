@@ -1,14 +1,26 @@
-# references:
-# * http://www.objc.io/issue-6/travis-ci.html
-# * https://github.com/supermarin/xcpretty#usage
-
-osx_image: xcode7.3
 language: objective-c
-# cache: cocoapods
-# podfile: Example/Podfile
-# before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
-script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/SwiftMagic.xcworkspace -scheme SwiftMagic-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+osx_image: xcode7.3
+xcode_project: SwiftMagic.xcodeproj
+xcode_scheme: SwiftMagic
+xcode_sdk: iphonesimulator9.3
+env:
+  global:
+  - FRAMEWORK_NAME=SwiftMagic
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+before_script:
+- carthage bootstrap
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: n4zfqQXvNxXbExX7T8DGU9KvzmigHIMqNo9omO5tFpE7HVDWaAfbFCQx2bb13mi0hklHttWj/1oBuTpdZUwpy3BEPHZO+S46Kbt0DWsD2k2k7rSZBunh1EokMdQwvzEFa5YGGIkcI+Acke+66C2l37A2xq9J6SmOi7K/MbBxtinBfThdH41dv4LtimqQWx48jAb1m0UccODsxBv+A7McjLzXAHpeM93lndreIqclzvhApuPcgNWjiSQeVsskvkUNHbtxxIds8yScnwWnTyYvAmtmUm9kWZKNO1GBXZNMfmqh/j9DUAN35Qumy04U/t8hEajIAhQc2WSExo/6kZMXYqazh8giXe8ss12D7MX3f57zDiOYXltceiRNr9ICgPEoQapROuPwV6csI9jhNtNSN3+lnys/6M+6ICjAUI4dcOpfn/ZgzOeJzScksLUMWKELrfiKBIlmhkHk0ezYpWbi2uIk5NAnibpUgBlkjV/3f7atMTu21ZEqBUHXpFhPnhj9Pqs6ppAFkEGvOATiBT0U283RvY9uJMebBK5WAOtEBIzelOMnq0+GyWdYuTRwMkLukItw8v7XbOPN5esbpURmuNzheH1X9ly3CArSmGtz6iPts0UJZXc4rGS99SGUButY1xTNb5RyNP9I2d84Kw/mvJu4apDUnk6msKVPNK+h41U=
+  file: "$FRAMEWORK_NAME.framework.zip"
+  skip_cleanup: true
+  on:
+    repo: zhihuitang/SwiftMagic
+    branch: cathage
+    tags: true

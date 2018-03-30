@@ -1,37 +1,52 @@
-# SwiftMagic
+# SwiftyLog
 
-[![CI Status](http://img.shields.io/travis/zhihuitang/SwiftMagic.svg?style=flat)](https://travis-ci.org/zhihuitang/SwiftMagic)
 [![Version](https://img.shields.io/cocoapods/v/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 [![License](https://img.shields.io/cocoapods/l/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
 
-SwiftMagic is a tool to record log in an elegant way. You also can send the log to the specified email address by shaking the device. Easy to use
+SwiftyLog is a tool to record log in an elegant way. You also can send the log to the specified email address by shaking the device. Easy to use
 
 ## 1. Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, run "Example" Target from Xcode.
 
 ## 2. Requirements
 
 Xcode: 9.0
 
-iOS: 8.0
+iOS: 9.0
 
 ## 3. Installation
 
-SwiftMagic is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+SwiftyLog is available through [CocoaPods](http://cocoapods.org) or [Carthage](https://github.com/Carthage/Carthage). 
+
+### 3.1 [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods.html)
+To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'SwiftMagic'
+pod 'SwiftyLog'
 # or
-# pod 'SwiftMagic', :git => 'https://github.com/zhihuitang/SwiftMagic.git'
+# pod 'SwiftyLog', :git => 'https://github.com/zhihuitang/SwiftyLog.git'
 ```
+
+### 3.2 [Carthage](https://github.com/Carthage/Carthage)
+Add this to Cartfile
+
+```
+github "https://github.com/zhihuitang/SwiftyLog.git"
+```
+
+Then run `carthage update` from command line:
+
+```
+$ carthage update
+```
+
 
 ## 4. Usage
 
 ```swift
-import SwiftMagic
+import SwiftyLog
 
 let logger = Logger.shared
 
@@ -75,6 +90,6 @@ Zhihui Tang, crafttang@gmail.com
 
 ## 6. License
 
-SwiftMagic is available under the MIT license. See the LICENSE file for more info.
+SwiftyLog is available under the MIT license. See the LICENSE file for more info.
 
 
