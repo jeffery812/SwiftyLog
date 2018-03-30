@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension UIWindow {
     open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         guard Logger.shared.level != .none else { return }
