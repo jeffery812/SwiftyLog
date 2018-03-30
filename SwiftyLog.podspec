@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
   SwiftyLog is logger written in Swift, record log in an elegant way.
+  It shows file name, function, line number of each log
                    DESC
 
   s.homepage     = "https://github.com/zhihuitang/SwiftyLog"
