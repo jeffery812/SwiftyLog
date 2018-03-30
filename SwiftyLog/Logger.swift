@@ -40,14 +40,24 @@ private let fileExtension = "txt"
 private let LOG_BUFFER_SIZE = 10
 
 public class Logger: NSObject {
-    public static let shared = Logger()
+
+    // MARK: - Output
     public var tag: String?
     public var level: LoggerLevel = .none
     public var ouput: LoggerOutput = .debuggerConsole
     public var showThread: Bool = false
-    private var data: [String] = []
     
+    // MARK: - Init
+    private let isolationQueue = DispatchQueue(label: "com.crafttang.isolation", qos: .background, attributes: .concurrent)
+    private let serialQueue = DispatchQueue(label: "com.crafttang.swiftylog")
     private let logSubdiretory = FileManager.documentDirectoryURL.appendingPathComponent(fileExtension)
+
+    public static let shared = Logger()
+    private var _data: [String] = []
+    private var data: [String] {
+        get { return isolationQueue.sync { return _data } }
+        set { isolationQueue.async(flags: .barrier) { self._data = newValue } }
+    }    
     
     var logUrl: URL? {
         let fileName = "SwiftMagic"
@@ -66,6 +76,7 @@ public class Logger: NSObject {
          */
     }
     
+    // MARK: - Methods
     @objc private func appMovedToBackground() {
          self.saveAsync()
     }
@@ -73,11 +84,7 @@ public class Logger: NSObject {
     func saveAsync() {
         guard let url = logUrl else { return }
         
-        let lock = NSLock()
-        lock.lock()
-        defer { lock.unlock() }
-        
-        DispatchQueue.global(qos: .background).async {
+        serialQueue.async {
             var stringsData = Data()
             for string in self.data {
                 if let stringData = (string + "\n").data(using: String.Encoding.utf8) {
@@ -135,16 +142,16 @@ public class Logger: NSObject {
     }
     
     private func addToBuffer(text: String) {
-        let lock = NSLock()
-        lock.lock()
-        defer { lock.unlock() }
-        
         data.append(text)
         if data.count > LOG_BUFFER_SIZE {
             saveAsync()
         }
     }
     
+}
+
+// MARK: - Output
+extension Logger {
     public func i(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
         log(.info, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
     }
