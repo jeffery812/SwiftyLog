@@ -2,11 +2,14 @@
 //  AppDelegate.swift
 //  Example
 //
-//  Created by Zhihui Tang on 2018-03-23.
+//  Created by Zhihui Tang on 2018-03-30.
 //  Copyright © 2018 Zhihui Tang. All rights reserved.
 //
 
 import UIKit
+import SwiftyLog
+
+let logger = Logger.shared
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        logger.level = .info
+        logger.ouput = .debugerConsoleAndFile
+        logger.d("App Started....")
+        
         return true
     }
 

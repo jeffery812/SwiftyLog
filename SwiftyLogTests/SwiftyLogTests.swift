@@ -1,15 +1,15 @@
 //
-//  SwiftMagicTests.swift
-//  SwiftMagicTests
+//  SwiftyLogTests.swift
+//  SwiftyLogTests
 //
-//  Created by Zhihui Tang on 2018-03-23.
+//  Created by Zhihui Tang on 2018-03-30.
 //  Copyright © 2018 Zhihui Tang. All rights reserved.
 //
 
 import XCTest
-@testable import SwiftMagic
+@testable import SwiftyLog
 
-class SwiftMagicTests: XCTestCase {
+class SwiftyLogTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
