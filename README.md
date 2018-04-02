@@ -1,8 +1,11 @@
 # SwiftyLog
 
-[![Version](https://img.shields.io/cocoapods/v/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
-[![License](https://img.shields.io/cocoapods/l/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftMagic)
+[![License](https://img.shields.io/cocoapods/l/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftyLog)
+[![Platform](https://img.shields.io/cocoapods/p/SwiftMagic.svg?style=flat)](http://cocoapods.org/pods/SwiftyLog)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Cocoapods Compatible](https://img.shields.io/badge/pod-compatible-brightgreen.svg)](https://guides.cocoapods.org/using/using-cocoapods.html)
+[![CI Status](https://travis-ci.org/zhihuitang/SwiftyLog.svg?branch=master)](https://travis-ci.org/zhihuitang/SwiftyLog)
+
 
 SwiftyLog is a tool to record log in an elegant way. You also can send the log to the specified email address by shaking the device. Easy to use
 

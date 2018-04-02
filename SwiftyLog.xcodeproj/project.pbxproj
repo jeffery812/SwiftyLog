@@ -14,7 +14,6 @@
 		026043C9206E6D1D00D01B4D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043BB206E6D1D00D01B4D /* Logger.swift */; };
 		026043CA206E6D1D00D01B4D /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043BD206E6D1D00D01B4D /* LoggerManager.swift */; };
 		026043CB206E6D1D00D01B4D /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043BE206E6D1D00D01B4D /* DeviceManager.swift */; };
-		026043CC206E6D1D00D01B4D /* HScrollableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043C0206E6D1D00D01B4D /* HScrollableTextView.swift */; };
 		026043CD206E6D1D00D01B4D /* Extension+Fundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043C2206E6D1D00D01B4D /* Extension+Fundation.swift */; };
 		026043CE206E6D1D00D01B4D /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043C3206E6D1D00D01B4D /* FileManager.swift */; };
 		026043CF206E6D1D00D01B4D /* Extension+UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043C4206E6D1D00D01B4D /* Extension+UIDevice.swift */; };
@@ -88,7 +87,6 @@
 		026043BB206E6D1D00D01B4D /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		026043BD206E6D1D00D01B4D /* LoggerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		026043BE206E6D1D00D01B4D /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
-		026043C0206E6D1D00D01B4D /* HScrollableTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HScrollableTextView.swift; sourceTree = "<group>"; };
 		026043C2206E6D1D00D01B4D /* Extension+Fundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Fundation.swift"; sourceTree = "<group>"; };
 		026043C3206E6D1D00D01B4D /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		026043C4206E6D1D00D01B4D /* Extension+UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIDevice.swift"; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 				026043B9206E6D1D00D01B4D /* Controllers */,
 				026043C1206E6D1D00D01B4D /* Extensions */,
 				026043BC206E6D1D00D01B4D /* Managers */,
-				026043BF206E6D1D00D01B4D /* Views */,
 				026043A2206E6D0400D01B4D /* SwiftyLog.h */,
 				026043A3206E6D0400D01B4D /* Info.plist */,
 			);
@@ -213,14 +210,6 @@
 				026043BE206E6D1D00D01B4D /* DeviceManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		026043BF206E6D1D00D01B4D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				026043C0206E6D1D00D01B4D /* HScrollableTextView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		026043C1206E6D1D00D01B4D /* Extensions */ = {
@@ -475,7 +464,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026043CC206E6D1D00D01B4D /* HScrollableTextView.swift in Sources */,
 				026043CF206E6D1D00D01B4D /* Extension+UIDevice.swift in Sources */,
 				026043D0206E6D1D00D01B4D /* Extension+UIColor.swift in Sources */,
 				026043C8206E6D1D00D01B4D /* LoggerViewController.swift in Sources */,
