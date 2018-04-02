@@ -57,9 +57,9 @@ public class Logger: NSObject {
     private var data: [String] {
         get { return isolationQueue.sync { return _data } }
         set { isolationQueue.async(flags: .barrier) { self._data = newValue } }
-    }    
+    }
     
-    var logUrl: URL? {
+    private var logUrl: URL? {
         let fileName = "SwiftMagic"
         try? FileManager.default.createDirectory(at: logSubdiretory, withIntermediateDirectories: false)
         let url = logSubdiretory.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
@@ -84,21 +84,22 @@ public class Logger: NSObject {
     func saveAsync() {
         guard let url = logUrl else { return }
         
-        serialQueue.async {
+        serialQueue.async { [weak self] in
             var stringsData = Data()
-            for string in self.data {
+            
+            self?.data.forEach { (string) in
                 if let stringData = (string + "\n").data(using: String.Encoding.utf8) {
                     stringsData.append(stringData)
                 } else {
-                    self.e("MutalbeData failed")
+                    self?.e("MutalbeData failed")
                 }
             }
-            
+
             do {
                 try stringsData.append2File(fileURL: url)
-                self.data.removeAll()
+                self?.data.removeAll()
             } catch let error as NSError {
-                self.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
+                self?.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
             }
         }
     }
@@ -117,7 +118,7 @@ public class Logger: NSObject {
         return strings.components(separatedBy: "\n")
     }
 
-    public func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
+    private func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
         
         guard level.rawValue >= self.level.rawValue else { return }
         
