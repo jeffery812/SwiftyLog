@@ -29,6 +29,7 @@
 		026043FA206E6D5000D01B4D /* ExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026043F9206E6D5000D01B4D /* ExampleUITests.swift */; };
 		02604405206E6DB700D01B4D /* SwiftyLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0260439F206E6D0400D01B4D /* SwiftyLog.framework */; };
 		02604406206E6DB700D01B4D /* SwiftyLog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0260439F206E6D0400D01B4D /* SwiftyLog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		02EB90002099BD5500FAA3CC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EB8FFF2099BD5500FAA3CC /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		026043F5206E6D5000D01B4D /* ExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		026043F9206E6D5000D01B4D /* ExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUITests.swift; sourceTree = "<group>"; };
 		026043FB206E6D5000D01B4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02EB8FFF2099BD5500FAA3CC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 		026043AC206E6D0400D01B4D /* SwiftyLogTests */ = {
 			isa = PBXGroup;
 			children = (
+				02EB8FFF2099BD5500FAA3CC /* Utilities.swift */,
 				026043AD206E6D0400D01B4D /* SwiftyLogTests.swift */,
 				026043AF206E6D0400D01B4D /* Info.plist */,
 			);
@@ -481,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02EB90002099BD5500FAA3CC /* Utilities.swift in Sources */,
 				026043AE206E6D0400D01B4D /* SwiftyLogTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

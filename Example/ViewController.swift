@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     }
     @IBAction func buttonTapped(_ sender: UIButton) {
         logger.i("buttton tapped")
+        logger.w("this is a warning message")
+        logger.e("ooops, something is wrong.")
     }
     
     override func didReceiveMemoryWarning() {

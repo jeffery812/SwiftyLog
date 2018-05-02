@@ -1,6 +1,6 @@
 //
 //  LoggerViewController.swift
-//  SwiftMagic
+//  SwiftyLog
 //
 //  Created by Zhihui Tang on 2018-01-10.
 //
@@ -154,7 +154,7 @@ class LoggerViewController: UIViewController {
         }
         /*
         if let data = try? Data(html) {
-            mailComposer.addAttachmentData(data, mimeType: "text/txt", fileName: "SwiftMagic.txt")
+            mailComposer.addAttachmentData(data, mimeType: "text/txt", fileName: "SwiftyLog.txt")
         }
         */
         self.present(mailComposer, animated: true, completion: nil)

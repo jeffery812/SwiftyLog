@@ -33,4 +33,27 @@ class SwiftyLogTests: XCTestCase {
         }
     }
     
+    func testConcurrentLogging() {
+        let dispatchQueue = DispatchQueue(label: "com.crafttang.swiftyLog", attributes: .concurrent)
+        let logger = Logger.shared
+        logger.level = .info
+        logger.ouput = .debugerConsoleAndFile
+        //logger.showThread = true
+        
+        for i in 0...120 {
+            randomDelay(maxDuration: 0.5)
+            dispatchQueue.async {
+                randomDelay(maxDuration: 0.5)
+                logger.d("hello: \(i)")
+            }
+        }
+        sleep(10)
+        logger.d("test finished")
+        logger.synchronize()
+        
+        // check manually if the SwiftyLog.txt has 120 records
+        
+        
+    }
+    
 }

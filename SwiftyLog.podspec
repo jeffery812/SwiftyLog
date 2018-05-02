@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SwiftyLog"
-  s.version      = "0.3.2"
+  s.version      = "0.3.3"
   s.summary      = "SwiftyLog is logger written in Swift, record log in an elegant way."
 
   # This description is used to generate tags and improve search results.

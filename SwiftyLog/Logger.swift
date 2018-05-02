@@ -1,6 +1,6 @@
 //
 //  Logger.swift
-//  SwiftMagic
+//  SwiftyLog
 //
 //  Created by Zhihui Tang on 2017-10-14.
 //
@@ -53,14 +53,15 @@ public class Logger: NSObject {
     private let logSubdiretory = FileManager.documentDirectoryURL.appendingPathComponent(fileExtension)
 
     public static let shared = Logger()
+    
     private var _data: [String] = []
     private var data: [String] {
         get { return isolationQueue.sync { return _data } }
-        set { isolationQueue.async(flags: .barrier) { self._data = newValue } }
+        set { isolationQueue.async(flags: .barrier) { self._data = newValue } }        
     }
     
     private var logUrl: URL? {
-        let fileName = "SwiftMagic"
+        let fileName = "SwiftyLog"
         try? FileManager.default.createDirectory(at: logSubdiretory, withIntermediateDirectories: false)
         let url = logSubdiretory.appendingPathComponent(fileName).appendingPathExtension(fileExtension)
         return url
@@ -83,15 +84,16 @@ public class Logger: NSObject {
     
     func saveAsync() {
         guard let url = logUrl else { return }
-        
         serialQueue.async { [weak self] in
+            guard let count = self?.data.count, count > 0 else { return }
+
             var stringsData = Data()
             
             self?.data.forEach { (string) in
                 if let stringData = (string + "\n").data(using: String.Encoding.utf8) {
                     stringsData.append(stringData)
                 } else {
-                    self?.e("MutalbeData failed")
+                    print("MutalbeData failed")
                 }
             }
 
@@ -99,7 +101,7 @@ public class Logger: NSObject {
                 try stringsData.append2File(fileURL: url)
                 self?.data.removeAll()
             } catch let error as NSError {
-                self?.e("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
+                print("wrote failed: \(url.absoluteString), \(error.localizedDescription)")
             }
         }
     }
@@ -143,7 +145,7 @@ public class Logger: NSObject {
     }
     
     private func addToBuffer(text: String) {
-        data.append(text)
+        isolationQueue.async(flags: .barrier) { self._data.append(text) }
         if data.count > LOG_BUFFER_SIZE {
             saveAsync()
         }
@@ -164,6 +166,10 @@ extension Logger {
     }
     public func e(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
         log(.error, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
+    }
+    
+    public func synchronize() {
+        saveAsync()
     }
 }
 

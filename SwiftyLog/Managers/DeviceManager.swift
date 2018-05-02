@@ -1,6 +1,6 @@
 //
 //  DeviceManager.swift
-//  SwiftMagic
+//  SwiftyLog
 //
 //  Created by Zhihui Tang on 2018-01-12.
 //
