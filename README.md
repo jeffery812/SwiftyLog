@@ -60,9 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
         // Disabled by default
         // Logger.shared.level = .none
+        #if DEBUG
         logger.level = .info
-        logger.showThread = true
         logger.ouput = .debugerConsoleAndFile
+        #else
+        logger.level = .none
+        #endif
         
         logger.d("Application started")
         // logger.i("information log")
