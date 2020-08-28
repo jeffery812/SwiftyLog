@@ -5,7 +5,7 @@
 //  Created by Zhihui Tang on 2018-01-12.
 //
 
-import Foundation
+import UIKit
 
 extension UIDevice {
     func MBFormatter(_ bytes: Int64) -> String {

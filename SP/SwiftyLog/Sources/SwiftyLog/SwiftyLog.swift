@@ -6,7 +6,7 @@
 //
 
 
-import Foundation
+import UIKit
 
 
 public enum LoggerLevel: Int {
@@ -69,7 +69,7 @@ public class Logger: NSObject {
     
     private override init() {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         /*
         NSSetUncaughtExceptionHandler { (exception) in
             Logger.shared.save()

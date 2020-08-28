@@ -5,7 +5,7 @@
 //  Created by Zhihui Tang on 2017-10-30.
 //
 
-import Foundation
+import UIKit
 
 public extension Date {
     var millisecondsSince1970:Int {

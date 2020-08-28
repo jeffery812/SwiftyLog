@@ -5,7 +5,7 @@
 //  Created by Zhihui Tang on 2018-01-12.
 //
 
-import Foundation
+import UIKit
 
 class DeviceManager: NSObject {
     class func info() -> [String] {

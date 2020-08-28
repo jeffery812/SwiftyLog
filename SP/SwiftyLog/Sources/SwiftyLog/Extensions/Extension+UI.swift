@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public extension UIViewController {
     func showAlert(withTitle title: String?, message: String?) {
@@ -32,7 +33,7 @@ public enum ShakeDirection: Int {
 }
 
 public extension UIView {
-    public func shake(direction: ShakeDirection = .horizontal, times: Int = 5,
+    func shake(direction: ShakeDirection = .horizontal, times: Int = 5,
                       interval: TimeInterval = 0.1, delta: CGFloat = 2,
                       completion: (() -> Void)? = nil) {        
         UIView.animate(withDuration: interval, animations: { () -> Void in
@@ -229,13 +230,13 @@ extension UIView {
     // MARK: - UIView blur
     ///
     /// - Parameter style: UIBlurEffectStyle
-    func addBlurEffect(style: UIBlurEffectStyle) {
-        let effect = UIBlurEffect(style: UIBlurEffectStyle.light)
+    func addBlurEffect(style: UIBlurEffect.Style) {
+        let effect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let effectView = UIVisualEffectView(effect: effect)
         effectView.frame = self.bounds
         self.backgroundColor = .clear
         self.addSubview(effectView)
-        self.sendSubview(toBack: effectView)
+        self.sendSubviewToBack(effectView)
     }
 }
 

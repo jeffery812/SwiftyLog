@@ -5,10 +5,10 @@
 //  Created by Zhihui Tang on 2018-01-09.
 //
 
-import Foundation
+import UIKit
 
 extension UIWindow {
-    open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         guard Logger.shared.level != .none else { return }
         guard Logger.shared.ouput == .debugerConsoleAndFile
             || Logger.shared.ouput == .deviceConsoleAndFile
