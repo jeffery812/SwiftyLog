@@ -5,7 +5,6 @@
 //  Created by Zhihui Tang on 2017-10-30.
 //
 
-import Foundation
 import UIKit
 
 public extension UIViewController {
@@ -33,7 +32,7 @@ public enum ShakeDirection: Int {
 }
 
 public extension UIView {
-    func shake(direction: ShakeDirection = .horizontal, times: Int = 5,
+    public func shake(direction: ShakeDirection = .horizontal, times: Int = 5,
                       interval: TimeInterval = 0.1, delta: CGFloat = 2,
                       completion: (() -> Void)? = nil) {        
         UIView.animate(withDuration: interval, animations: { () -> Void in
