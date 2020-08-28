@@ -45,6 +45,10 @@ Then run `carthage update` from command line:
 $ carthage update
 ```
 
+### 3.3 SwiftPackage Manager:
+
+https://github.com/zhihuitang/SwiftyLog
+branch : develop
 
 ## 4. Usage
 
