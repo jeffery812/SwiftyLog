@@ -120,7 +120,7 @@ public class Logger: NSObject {
         return strings.components(separatedBy: "\n")
     }
 
-    private func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread) {
+    private func log(_ level: LoggerLevel, message: String, currentTime: Date, fileName: String , functionName: String, lineNumber: Int, thread: Thread, persistNow: Bool = false) {
         
         guard level.rawValue >= self.level.rawValue else { return }
         
@@ -130,23 +130,23 @@ public class Logger: NSObject {
         
         switch self.ouput {
             case .fileOnly:
-                addToBuffer(text: "\(currentTime.iso8601) \(text)")
+                addToBuffer(text: "\(currentTime.iso8601) \(text)", persistNow: persistNow)
             case .debuggerConsole:
                 print("\(currentTime.iso8601) \(text)")
             case .deviceConsole:
                 NSLog(text)
             case .debugerConsoleAndFile:
                 print("\(currentTime.iso8601) \(text)")
-                addToBuffer(text: "\(currentTime.iso8601) \(text)")
+                addToBuffer(text: "\(currentTime.iso8601) \(text)", persistNow: persistNow)
             case .deviceConsoleAndFile:
                 NSLog(text)
-                addToBuffer(text: "\(currentTime.iso8601) \(text)")
+                addToBuffer(text: "\(currentTime.iso8601) \(text)", persistNow: persistNow)
         }
     }
     
-    private func addToBuffer(text: String) {
+    private func addToBuffer(text: String, persistNow: Bool = false) {
         isolationQueue.async(flags: .barrier) { self._data.append(text) }
-        if data.count > LOG_BUFFER_SIZE {
+        if data.count > LOG_BUFFER_SIZE || persistNow {
             saveAsync()
         }
     }
@@ -155,17 +155,17 @@ public class Logger: NSObject {
 
 // MARK: - Output
 extension Logger {
-    public func i(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
-        log(.info, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
+    public func i(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current, persistNow: Bool = false) {
+        log(.info, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread, persistNow: persistNow)
     }
-    public func d(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
-        log(.debug, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
+    public func d(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current, persistNow: Bool = false) {
+        log(.debug, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread, persistNow: persistNow)
     }
-    public func w(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
-        log(.warning, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
+    public func w(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current, persistNow: Bool = false) {
+        log(.warning, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread, persistNow: persistNow)
     }
-    public func e(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current ) {
-        log(.error, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread)
+    public func e(_ message: String, currentTime: Date = Date(), fileName: String = #file, functionName: String = #function, lineNumber: Int = #line, thread: Thread = Thread.current, persistNow: Bool = false) {
+        log(.error, message: message, currentTime: currentTime, fileName: fileName, functionName: functionName, lineNumber: lineNumber, thread: thread, persistNow: persistNow)
     }
     
     public func synchronize() {
